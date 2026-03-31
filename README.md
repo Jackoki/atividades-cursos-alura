@@ -10,3 +10,8 @@ Como executar: Abra a pasta "curso-java-refatoracao-api" e então no terminal fa
 Curso 3: [Boas práticas de programação: automatizando testes com Java](https://cursos.alura.com.br/course/boas-praticas-programacao-testes-java)
 
 Como executar: Abra a pasta "curso-java-testes-junit" e então no terminal faça o comando `mvn clean install` e depois execute com `mvn spring-boot:run`. Abra também o Postman e clique no botão Import e selecione o arquivo ADOPET.postman_collection.json para testar as requisições enquanto o projeto estiver executando. Para executar os testes, faça o comando `mvn test`.
+
+Curso 4: [Java Reflection: simplifique a conversão de objetos](https://cursos.alura.com.br/course/java-reflection-simplifique-conversao-objetos)
+
+Esse curso em si não tem tanta questão de executar, já que o mesmo é mais para compreender sofre Java Reflection e seu funcionamento por trás dos panos nos frameworks. A pasta especifica é o curso-java-reflection.
+
