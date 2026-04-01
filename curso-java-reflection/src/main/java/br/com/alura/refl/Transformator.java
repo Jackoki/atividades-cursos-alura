@@ -1,6 +1,8 @@
-package main.java.br.com.alura.refl;
+package br.com.alura.refl;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.Arrays;
+import java.lang.reflect.Field;
 
 public class Transformator {
     public <I, O> O transform(I input) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {        Class<?> source = input.getClass();
@@ -11,6 +13,25 @@ public class Transformator {
         Field[] sourceFields = source.getDeclaredFields();
         Field[] targetFields = target.getDeclaredFields();
 
+        Arrays.stream(sourceFields).forEach(sourceField -> 
+            Arrays.stream(targetFields).forEach(targetField -> {
+                validate(sourceField, targetField);
+                try {
+                    targetField.set(targetClass, sourceField.get(input));
+                }
+
+                catch(IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+            }));
+
         return targetClass;
+    }
+
+    private void validate(Field sourceField, Field targetField){
+        if(sourceField.getName().equals(targetField.getName()) && sourceField.getType().equals(targetField.getType())) {
+            sourceField.setAccessible(true);
+            targetField.setAccessible(true);
+        }
     }
 }
